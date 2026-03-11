@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Wireless Earbuds",
+    "category": "Electronics",
+    "price": 29,
+    "rating": 4.7,
+    "sales": 12000
+  },
+  {
+    "name": "Gaming Mouse",
+    "category": "Electronics",
+    "price": 19,
+    "rating": 4.5,
+    "sales": 8500
+  },
+  {
+    "name": "Mechanical Keyboard",
+    "category": "Electronics",
+    "price": 75,
+    "rating": 4.8,
+    "sales": 6400
+  },
+  {
+    "name": "Smart Watch",
+    "category": "Wearable",
+    "price": 120,
+    "rating": 4.6,
+    "sales": 9200
+  },
+  {
+    "name": "Portable Speaker",
+    "category": "Audio",
+    "price": 45,
+    "rating": 4.4,
+    "sales": 7100
+  }
+]
+
