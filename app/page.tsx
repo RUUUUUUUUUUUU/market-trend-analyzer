@@ -1,164 +1,112 @@
 "use client"
 
-import products from "../data/products.json"
-
+import { useState } from "react"
 import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
   Tooltip,
-  Legend
-} from "chart.js"
+  ResponsiveContainer
+} from "recharts"
 
-import { Bar } from "react-chartjs-2"
-
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-)
+const chartData = [
+  { name: "Amazon", score: 82 },
+  { name: "Crypto", score: 91 },
+  { name: "AI Tools", score: 74 },
+  { name: "Gaming", score: 65 },
+  { name: "Fashion", score: 58 }
+]
 
 export default function Home() {
 
-  const chartData = {
-    labels: products.map((p:any)=>p.name),
-    datasets: [
-      {
-        label: "Product Sales",
-        data: products.map((p:any)=>p.sales),
-        backgroundColor:"#ec4899"
-      }
-    ]
-  }
+  const [file, setFile] = useState<File | null>(null)
 
   return (
+    <div className="min-h-screen bg-pink-400 text-white p-10">
 
-    <div style={{
-      minHeight:"100vh",
-      background:"linear-gradient(135deg,#fdf2f8,#eef2ff)",
-      padding:"40px"
-    }}>
+      <h1 className="text-4xl font-bold mb-10">
+        AI Market Trend Analyzer
+      </h1>
 
-      <div style={{
-        maxWidth:"1100px",
-        margin:"auto"
-      }}>
+      {/* Upload */}
+      <div className="bg-zinc-900 p-6 rounded-xl mb-10">
+        <h2 className="text-xl mb-4">Upload Dataset</h2>
 
-        <h1 style={{
-          fontSize:"40px",
-          fontWeight:"bold",
-          color:"#111827"
-        }}>
-          Marketplace Trend Analyzer
-        </h1>
+        <input
+          type="file"
+          onChange={(e)=>setFile(e.target.files?.[0] || null)}
+          className="text-black"
+        />
 
-        <p style={{
-          color:"#6b7280",
-          marginBottom:"30px"
-        }}>
-          Shelby Powered Dataset Analytics
-        </p>
+        {file && (
+          <p className="mt-3 text-green-400">
+            Dataset Ready: {file.name}
+          </p>
+        )}
+      </div>
 
+      {/* Chart */}
+      <div className="bg-zinc-900 p-6 rounded-xl mb-10">
+        <h2 className="text-xl mb-4">Market Trend Score</h2>
 
-        <div style={{
-          display:"flex",
-          gap:"20px",
-          marginBottom:"30px"
-        }}>
+        <ResponsiveContainer width="100%" height={300}>
+          <LineChart data={chartData}>
+            <XAxis dataKey="name" stroke="#fff"/>
+            <YAxis stroke="#fff"/>
+            <Tooltip />
+            <Line type="monotone" dataKey="score" stroke="#ff4da6" strokeWidth={3}/>
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
 
-          <div style={{
-            flex:1,
-            background:"#ffffff",
-            padding:"25px",
-            borderRadius:"14px",
-            boxShadow:"0 10px 30px rgba(0,0,0,0.05)"
-          }}>
-            <h3>Total Products</h3>
-            <h2>{products.length}</h2>
-          </div>
+      {/* Table */}
+      <div className="bg-zinc-900 p-6 rounded-xl">
 
-          <div style={{
-            flex:1,
-            background:"#ffffff",
-            padding:"25px",
-            borderRadius:"14px",
-            boxShadow:"0 10px 30px rgba(0,0,0,0.05)"
-          }}>
-            <h3>Top Category</h3>
-            <h2>Electronics</h2>
-          </div>
+        <h2 className="text-xl mb-4">
+          Dataset Explorer
+        </h2>
 
-        </div>
+        <table className="w-full">
 
+          <thead>
+            <tr className="text-left text-zinc-400">
+              <th>Dataset</th>
+              <th>Category</th>
+              <th>Trend Score</th>
+              <th>Storage</th>
+            </tr>
+          </thead>
 
-        <div style={{
-          background:"#ffffff",
-          padding:"30px",
-          borderRadius:"14px",
-          marginBottom:"30px",
-          boxShadow:"0 10px 30px rgba(0,0,0,0.05)"
-        }}>
+          <tbody className="space-y-2">
 
-          <h2>Sales Analytics</h2>
+            <tr>
+              <td>Amazon Electronics</td>
+              <td>Ecommerce</td>
+              <td className="text-green-400">82</td>
+              <td>Pending</td>
+            </tr>
 
-          <div style={{maxWidth:"900px"}}>
-            <Bar data={chartData}/>
-          </div>
+            <tr>
+              <td>Crypto Market</td>
+              <td>Finance</td>
+              <td className="text-green-400">91</td>
+              <td>Pending</td>
+            </tr>
 
-        </div>
+            <tr>
+              <td>AI Tools</td>
+              <td>AI</td>
+              <td className="text-yellow-400">74</td>
+              <td>Pending</td>
+            </tr>
 
+          </tbody>
 
-        <div style={{
-          background:"#ffffff",
-          padding:"30px",
-          borderRadius:"14px",
-          boxShadow:"0 10px 30px rgba(0,0,0,0.05)"
-        }}>
-
-          <h2>Product Dataset</h2>
-
-          <table style={{
-            width:"100%",
-            marginTop:"20px",
-            borderCollapse:"collapse"
-          }}>
-
-            <thead>
-              <tr style={{background:"#f9fafb"}}>
-                <th style={{padding:"12px"}}>Product</th>
-                <th>Category</th>
-                <th>Price</th>
-                <th>Rating</th>
-                <th>Sales</th>
-              </tr>
-            </thead>
-
-            <tbody>
-
-            {products.map((p:any,i:number)=>(
-              <tr key={i}>
-                <td style={{padding:"12px"}}>{p.name}</td>
-                <td>{p.category}</td>
-                <td>${p.price}</td>
-                <td>{p.rating}</td>
-                <td>{p.sales}</td>
-              </tr>
-            ))}
-
-            </tbody>
-
-          </table>
-
-        </div>
+        </table>
 
       </div>
 
     </div>
-
   )
 }
