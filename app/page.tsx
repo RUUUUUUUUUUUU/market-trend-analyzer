@@ -5,22 +5,27 @@ import Link from "next/link"
 export default function Home() {
   return (
 
-<div className="min-h-screen bg-gradient-to-b from-pink-200 via-white to-purple-100 text-gray-800">
+<div className="min-h-screen bg-gradient-to-br from-purple-900 via-purple-700 to-pink-500 text-white">
 
 {/* NAVBAR */}
 
-<nav className="flex justify-between items-center px-10 py-6">
+<nav className="flex justify-between items-center px-12 py-6">
 
-<h1 className="font-bold text-xl">
+<h1 className="text-xl font-bold">
 Shelby AI Storage
 </h1>
 
-<div className="flex gap-6">
+<div className="flex gap-8 text-sm items-center">
 
 <a href="#features">Features</a>
-<a href="#flow">How it Works</a>
-<Link href="/dashboard" className="bg-pink-500 text-white px-4 py-2 rounded-lg">
-Dashboard
+<a href="#storage">Storage</a>
+<a href="#analytics">Analytics</a>
+
+<Link
+href="/dashboard"
+className="bg-white text-black px-5 py-2 rounded-lg"
+>
+Start Building
 </Link>
 
 </div>
@@ -28,24 +33,28 @@ Dashboard
 </nav>
 
 
-
 {/* HERO */}
 
-<section className="text-center py-24 px-6">
+<section className="max-w-6xl mx-auto py-32 px-8">
 
-<h1 className="text-6xl font-bold mb-6">
-Decentralized Storage
+<h1 className="text-7xl font-bold leading-tight mb-8">
+
+Decentralized  
 <br/>
-for AI Datasets
+AI Dataset Storage
+
 </h1>
 
-<p className="text-gray-600 max-w-xl mx-auto mb-10">
-Analyze marketplace data and store results securely on the decentralized Shelby network.
+<p className="max-w-lg text-purple-200 text-lg mb-10">
+
+Upload AI datasets, analyze marketplace trends,
+and store results permanently on the Shelby decentralized network.
+
 </p>
 
 <Link
 href="/dashboard"
-className="bg-pink-500 text-white px-8 py-4 rounded-xl text-lg"
+className="bg-white text-black px-8 py-4 rounded-lg text-lg"
 >
 Launch Dashboard
 </Link>
@@ -53,105 +62,52 @@ Launch Dashboard
 </section>
 
 
+{/* FEATURE SECTION */}
 
-{/* STATS */}
+<section id="features" className="max-w-6xl mx-auto grid grid-cols-3 gap-10 pb-32 px-8">
 
-<section className="grid grid-cols-4 gap-6 max-w-5xl mx-auto text-center mb-24">
+<div className="bg-white/10 backdrop-blur-md p-8 rounded-xl">
 
-<div className="bg-white p-6 rounded-xl shadow">
-<h2 className="text-3xl font-bold text-pink-500">10TB+</h2>
-<p className="text-gray-500">Storage Volume</p>
-</div>
-
-<div className="bg-white p-6 rounded-xl shadow">
-<h2 className="text-3xl font-bold text-pink-500">99.9%</h2>
-<p className="text-gray-500">Uptime SLA</p>
-</div>
-
-<div className="bg-white p-6 rounded-xl shadow">
-<h2 className="text-3xl font-bold text-pink-500">&lt;100ms</h2>
-<p className="text-gray-500">Retrieval Speed</p>
-</div>
-
-<div className="bg-white p-6 rounded-xl shadow">
-<h2 className="text-3xl font-bold text-pink-500">3M+</h2>
-<p className="text-gray-500">Dataset Requests</p>
-</div>
-
-</section>
-
-
-
-{/* FEATURES */}
-
-<section id="features" className="grid grid-cols-3 gap-10 max-w-6xl mx-auto mb-32 px-6">
-
-<div className="bg-white p-8 rounded-xl shadow">
-<h3 className="font-bold text-lg mb-3">
+<h3 className="font-bold text-xl mb-3">
 Decentralized Storage
 </h3>
-<p className="text-gray-500">
-Store AI datasets across distributed Shelby nodes ensuring reliability and scalability.
+
+<p className="text-purple-200">
+Store AI datasets across Shelby distributed nodes
+with permanent CID addressing.
 </p>
+
 </div>
 
-<div className="bg-white p-8 rounded-xl shadow">
-<h3 className="font-bold text-lg mb-3">
-Lightning Fast Retrieval
+
+<div className="bg-white/10 backdrop-blur-md p-8 rounded-xl">
+
+<h3 className="font-bold text-xl mb-3">
+Marketplace Analytics
 </h3>
-<p className="text-gray-500">
-Access your data instantly using Shelby's optimized gateway infrastructure.
+
+<p className="text-purple-200">
+Analyze marketplace trends and generate AI insights
+from uploaded datasets.
 </p>
+
 </div>
 
-<div className="bg-white p-8 rounded-xl shadow">
-<h3 className="font-bold text-lg mb-3">
-AI Dataset Analytics
+
+<div className="bg-white/10 backdrop-blur-md p-8 rounded-xl">
+
+<h3 className="font-bold text-xl mb-3">
+Global Data Access
 </h3>
-<p className="text-gray-500">
-Analyze marketplace trends and visualize insights with built-in analytics dashboard.
+
+<p className="text-purple-200">
+Access stored files anywhere using Shelby CID gateways.
 </p>
+
 </div>
+
 
 </section>
-
-
-
-{/* STORAGE FLOW */}
-
-<section id="flow" className="max-w-6xl mx-auto text-center mb-32 px-6">
-
-<h2 className="text-3xl font-bold mb-10">
-How Shelby Storage Works
-</h2>
-
-<div className="grid grid-cols-3 gap-8">
-
-<div className="bg-white p-8 rounded-xl shadow">
-<h3 className="font-bold mb-2">1 Upload Dataset</h3>
-<p className="text-gray-500">
-Upload AI dataset through the dashboard interface.
-</p>
-</div>
-
-<div className="bg-white p-8 rounded-xl shadow">
-<h3 className="font-bold mb-2">2 Shelby Storage</h3>
-<p className="text-gray-500">
-Files are stored on decentralized Shelby nodes and CID is generated.
-</p>
-</div>
-
-<div className="bg-white p-8 rounded-xl shadow">
-<h3 className="font-bold mb-2">3 Access Anywhere</h3>
-<p className="text-gray-500">
-Retrieve data globally using the CID through Shelby gateways.
-</p>
-</div>
-
-</div>
-
-</section>
-
 
 
 {/* CTA */}
@@ -159,16 +115,16 @@ Retrieve data globally using the CID through Shelby gateways.
 <section className="text-center pb-32">
 
 <h2 className="text-4xl font-bold mb-6">
-Start Building on Shelby
+Build AI Storage Apps on Shelby
 </h2>
 
-<p className="text-gray-600 mb-10">
-Upload datasets, analyze markets, and power your AI pipelines.
+<p className="text-purple-200 mb-10">
+Upload datasets, generate analytics, and store results permanently.
 </p>
 
 <Link
 href="/dashboard"
-className="bg-pink-500 text-white px-8 py-4 rounded-xl text-lg"
+className="bg-white text-black px-8 py-4 rounded-lg text-lg"
 >
 Open Dashboard
 </Link>
