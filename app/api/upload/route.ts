@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server"
 
 function generateCID() {
-
   const chars =
     "abcdefghijklmnopqrstuvwxyz123456789"
 
